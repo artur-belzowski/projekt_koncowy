@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+    {% block title %}Value MINTED{% endblock %}
+{% block content %}
+<center>
+<div class="container">
+
+  <h2><p>The value for this wallet is {{ suma }} CRO.</p></h2>
+  <br>
+  <table border=10 class="table table-bordered">
+    <CAPTION><h4>DETAILS</h4></CAPTION>
+        <tr ALIGN=center bgcolor="gray">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Floor Price</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for nft in nfts_minted %}
+      <tr>
+        <td>{{ nft.name }}</td>
+        <td>{{ nft.balance }}</td>
+        {% if nft['floor_price'] is not none %}
+          <td>{{ nft['floor_price'] }}</td>
+            {% else %}
+          <td>b.d.</td>
+        {% endif %}
+        <td>{{ nft.result }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  </center>
+{% endblock %}
